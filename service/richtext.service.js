@@ -12,7 +12,7 @@ class TaskService {
   // }
 
   async getRichTextInputs() {
-    return await richtextRepository.getContent();
+    return await richtextRepository.getRichTextInputs();
   }
 
   async updateRichText(richtext) {
