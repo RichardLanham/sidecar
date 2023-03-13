@@ -4,8 +4,8 @@ const logger = require("../logger/api.logger");
 const connect = () => {
   const hostName = process.env.SIDECARHOST;
   const userName = process.env.SIDECARUSER;
-  const password = process.env.SIDECARPASSWORD;
-  const database = process.env.SIDECARDB;
+  const password = process.env.SIDECARPGPASSWORD;
+  const database = process.env.SIDECARPGDB;
   const dialect = process.env.SIDECARDIALECT;
 
   const sequelize = new Sequelize(database, userName, password, {
