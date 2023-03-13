@@ -8,7 +8,7 @@ const taskController = require("./controller/task.controller");
 const richTextController = require("./controller/richtext.controller");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.SIDECARPORT || 3081;
 
 app.use(bodyParser.json());
 app.use(cors());

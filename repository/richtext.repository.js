@@ -29,7 +29,7 @@ class RichTextRepository {
 
   async getRichTextInputs() {
     try {
-      const content = await this.db.richtextInputs.findOne();
+      const content = await this.db.richtextInputs.findOne({ id: 1 });
       //   console.log(content);
       //   console.log(this.db);
       //   const content = await this.db.richtext.findAll();

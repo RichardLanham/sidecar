@@ -2,11 +2,11 @@ const { Sequelize, Model, DataTypes } = require("sequelize");
 const logger = require("../logger/api.logger");
 
 const connect = () => {
-  const hostName = process.env.HOST;
-  const userName = process.env.USER;
-  const password = process.env.PASSWORD;
-  const database = process.env.DB;
-  const dialect = process.env.DIALECT;
+  const hostName = process.env.SIDECARHOST;
+  const userName = process.env.SIDECARUSER;
+  const password = process.env.SIDECARPASSWORD;
+  const database = process.env.SIDECARDB;
+  const dialect = process.env.SIDECARDIALECT;
 
   const sequelize = new Sequelize(database, userName, password, {
     host: hostName,
