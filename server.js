@@ -2,42 +2,63 @@ const express = require("express");
 const bodyParser = require("body-parser");
 var cors = require("cors");
 require("dotenv").config();
-
-const taskController = require("./controller/task.controller");
-
-const richTextController = require("./controller/richtext.controller");
-
 const app = express();
 const port = process.env.SIDECARPORT || 3081;
-
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/sidecar/api/richtext", (req, res) => {
-  richTextController.getRichText().then((data) => res.json(data));
+const taskController = require("./controller/task.controller");
+const richTextController = require("./controller/richtext.controller");
+
+app.get("/sidecar/api/components_sections_rich_texts", (req, res) => {
+  richTextController.getSectionsRichText().then((data) => res.json(data));
 });
-app.put("/sidecar/api/richtext", (req, res) => {
+app.get("/sidecar/api/components_slices_inputs", (req, res) => {
+  richTextController.getSlicesInputs().then((data) => res.json(data));
+});
+
+app.put("/sidecar/api/components_sections_rich_texts", (req, res) => {
   richTextController
-    .updateRichText(req.body.richtext)
+    .updateSectionsRichText(req.body.richtext)
     .then((data) => res.json(data));
 });
 
-app.get("/sidecar/api/richtextInputs", (req, res) => {
-  richTextController.getRichTextInputs().then((data) => res.json(data));
-});
-app.put("/sidecar/api/richtextInputs", (req, res) => {
+app.put("/sidecar/api/components_slices_inputs", (req, res) => {
   richTextController
     .updateRichTextInputs(req.body.richtext)
     .then((data) => res.json(data));
 });
 
-// TODO
-// ComponentSectionsLargeVideo.richtext
-// // components_slices_large_videos
+///////
 
-// components_elements_ckeditors
+app.put("/sidecar/api/components_slices_large_videos", (req, res) => {
+  richTextController
+    .updateSlicesLargeVideos(req.body.richtext)
+    .then((data) => res.json(data));
+});
 
-//
+app.put("/sidecar/api/components_elements_gmaps", (req, res) => {
+  richTextController
+    .updateElementsGmaps(req.body.richtext)
+    .then((data) => res.json(data));
+});
+
+app.put("/sidecar/api/components_elements_ckeditors", (req, res) => {
+  richTextController
+    .updateElementsCkeditors(req.body.richtext)
+    .then((data) => res.json(data));
+});
+
+// // TODO
+// components_slices_large_videos richtext
+// components_elements_gmaps richtext
+// components_elements_ckeditors richtext
+
+//// content TO richtext
+// components_sections_rich_texts.model
+
+// ALL DONE
+// components_slices_inputs
 
 /// boilerplate ////////////////////////////////////////////////////////////////////////////////////////////// boiler plate:
 app.get("/api/tasks", (req, res) => {

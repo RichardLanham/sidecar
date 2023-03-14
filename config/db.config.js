@@ -27,8 +27,33 @@ const connect = () => {
   db.Sequelize = Sequelize;
   db.sequelize = sequelize;
   db.tasks = require("../model/task.model")(sequelize, DataTypes, Model);
-  db.richtext = require("../model/richtext.model")(sequelize, DataTypes, Model);
-  db.richtextInputs = require("../model/richtextInputs.model")(
+
+  db.sectionsRichtext =
+    require("../model/components_sections_rich_texts.model")(
+      sequelize,
+      DataTypes,
+      Model
+    );
+
+  db.slicesInputs = require("../model/components_slices_inputs")(
+    sequelize,
+    DataTypes,
+    Model
+  );
+
+  //
+  db.elementsCkeditors = require("../model/components_elements_ckeditors")(
+    sequelize,
+    DataTypes,
+    Model
+  );
+  db.elementsGmaps = require("../model/components_elements_gmaps")(
+    sequelize,
+    DataTypes,
+    Model
+  );
+
+  db.slicesLargeVideos = require("../model/components_slices_large_videos")(
     sequelize,
     DataTypes,
     Model
